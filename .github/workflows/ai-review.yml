@@ -9,6 +9,9 @@ on:
 jobs:
   review:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write       # 允许创建 issue 评论
+      pull-requests: write # 允许创建 PR 评论
     steps:
       - uses: actions/checkout@v4
         with:
