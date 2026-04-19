@@ -1,0 +1,38 @@
+{
+  "weapon_id": 2001,
+  "weapon_name": "寒冰长弓",
+  "description": "由永冻冰川的核心精华凝聚而成的长弓，箭矢附带刺骨寒气。",
+  "weapon_type": "bow",
+  "attack_type": "ranged",
+  "rarity": 4,
+  "base_stats": {
+    "physical_attack": 85,
+    "magic_attack": 0,
+    "attack_interval": 1.4,
+    "critical_rate": 0.2,
+    "critical_damage": 1.5,
+    "range": 12.0
+  },
+  "passive_skill": {
+    "skill_id": 10101,
+    "skill_name": "极寒之触",
+    "trigger_type": "on_hit",
+    "trigger_probability": 1.0,
+    "effects": [
+      {
+        "effect_type": "modify_speed",
+        "target_type": "enemy",
+        "attribute": "move_speed",
+        "value": -0.3,
+        "duration": 2.5,
+        "stackable": false,
+        "element_type": "ice"
+      }
+    ]
+  },
+  "resources": {
+    "icon": "TODO: 替换为实际资源路径/items/weapons/ice_bow_icon.png",
+    "model": "TODO: 替换为实际资源路径/items/weapons/ice_bow_model.prefab",
+    "projectile": "TODO: 替换为实际资源路径/effects/ice_arrow_projectile.prefab"
+  }
+}

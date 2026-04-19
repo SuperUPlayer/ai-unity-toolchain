@@ -1,0 +1,30 @@
+# AI Unity 工具链配置
+llm:
+  # 主力模型（智谱GLM-5）
+  primary:
+    provider: zhipu
+    model: glm-5.1
+    base_url: https://open.bigmodel.cn/api/paas/v4/
+    temperature: 0.2          # 低温度 = 输出更稳定，适合代码
+    max_tokens: 4096
+  
+  # # 备用模型（主力挂了自动切换）
+  # fallback:
+  #   provider: qwen
+  #   model: qwen-max
+  #   base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+  #   temperature: 0.2
+  #   max_tokens: 4096
+
+  # 推理模型（复杂分析时可选）
+  reasoning:
+    provider: deepseek
+    model: deepseek-reasoner
+    base_url: https://api.deepseek.com
+    max_tokens: 8192
+
+# 安全限制
+safety:
+  max_tokens_per_request: 8192
+  max_file_chars: 15000
+  output_dir: generated/
