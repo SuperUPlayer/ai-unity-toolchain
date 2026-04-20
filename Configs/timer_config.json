@@ -1,0 +1,40 @@
+{
+  "default_settings": {
+    "default_duration": 60.0,
+    "tick_interval": 1.0,
+    "auto_destroy_on_complete": true,
+    "use_unscaled_time": false,
+    "description": "计时器系统默认配置"
+  },
+  "timer_presets": [
+    {
+      "preset_id": "short",
+      "preset_name": "短计时器",
+      "duration": 5.0,
+      "description": "适用于短时间倒计时，如技能冷却、buff持续时间"
+    },
+    {
+      "preset_id": "medium",
+      "preset_name": "中等计时器",
+      "duration": 30.0,
+      "description": "适用于中等时长倒计时，如关卡倒计时"
+    },
+    {
+      "preset_id": "long",
+      "preset_name": "长计时器",
+      "duration": 300.0,
+      "description": "适用于长时间倒计时，如活动倒计时"
+    },
+    {
+      "preset_id": "gcd",
+      "preset_name": "公共冷却",
+      "duration": 1.0,
+      "description": "GCD默认时长"
+    }
+  ],
+  "manager_settings": {
+    "max_active_timers": 100,
+    "enable_debug_log": false,
+    "description": "计时器管理器配置"
+  }
+}

@@ -1,0 +1,5 @@
+# 第二部分额外依赖（在第一部分的基础上）
+langchain>=0.2.0,<0.4
+langchain-openai>=0.1.8,<0.3
+langchain-core>=0.2.0,<0.4
+langgraph>=0.2.0,<0.4
