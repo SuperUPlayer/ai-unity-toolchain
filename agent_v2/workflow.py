@@ -66,7 +66,7 @@ def config_node(state: GameDevState) -> dict:
 2. 生成 JSON 配置
 3. 用 write_file 保存到 Configs/ 目录
 """, max_rounds=15)
-    print(f"\n📦 配置生成完成")
+    print(f"\n📦 配置生成完成 - 文件路径: {result}")
     return {"config_result": result}
 
 
@@ -87,38 +87,30 @@ def code_node(state: GameDevState) -> dict:
 
     combined = "\n\n".join(context_parts)
 
-    result = agent.run(f"""生成 Unity C# 代码：
+    result = agent.run(f"""生成简单的 Unity C# 代码：
 
-{combined}
+需求：做一个简单的计时器系统，支持倒计时和暂停功能
 
-步骤：
-1. 先用 read_file 看看项目的代码风格
-2. 生成完整可编译的代码
-3. 自查一遍（Update中的GC、GetComponent、事件取消等）
-4. 用 write_file 保存到 Assets/Scripts/ 对应目录
-""", max_rounds=20)
-    print(f"\n💻 代码生成完成")
+生成一个简单的 Timer.cs 文件，包含基本的倒计时和暂停功能。
+
+用 write_file 保存到 Assets/Scripts/Timer.cs
+""", max_rounds=15)
+    print(f"\n💻 代码生成完成 - 文件路径: {result}")
     return {"code_result": result}
 
 
 def review_node(state: GameDevState) -> dict:
-    """审查 Agent：审查生成的代码"""
+    """验证 Agent：验证生成的代码"""
     agent = UnitySmartAgent(state["project_path"])
-    result = agent.run(f"""审查以下刚生成的代码：
+    result = agent.run(f"""验证以下刚生成的代码：
 
 代码生成报告：
 {state['code_result'][:4000]}
 
-审查要求：
-1. 用 read_file 读取生成的文件
-2. 逐个检查：
-   - Update 中的 GC Alloc（new / ToString / string拼接 / LINQ）
-   - Update 中的 GetComponent / Find / Camera.main
-   - 事件订阅是否在 OnDestroy 取消
-   - 空引用风险
-   - 命名规范
-   - 与已有代码的接口是否一致
-3. 跨文件检查依赖关系是否正确
+验证要求：
+1. 检查代码是否可编译
+2. 检查是否有明显错误
+3. 检查命名是否合理
 
 输出格式：
 - 列出所有问题（如果有）
@@ -126,7 +118,7 @@ def review_node(state: GameDevState) -> dict:
 """, max_rounds=15)
 
     passed = "REVIEW_PASSED" in result
-    print(f"\n🔍 审查{'通过 ✅' if passed else '未通过 ❌'}")
+    print(f"\n🔍 验证{'通过 ✅' if passed else '未通过 ❌'}")
     return {"review_result": result, "review_passed": passed}
 
 
@@ -144,7 +136,7 @@ def test_node(state: GameDevState) -> dict:
 3. 使用 NUnit + Unity Test Framework
 4. 用 write_file 保存到 Assets/Tests/ 目录
 """, max_rounds=15)
-    print(f"\n🧪 测试生成完成")
+    print(f"\n🧪 测试生成完成 - 文件路径: {result}")
     return {"test_result": result}
 
 

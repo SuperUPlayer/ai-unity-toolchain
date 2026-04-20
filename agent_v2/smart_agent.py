@@ -91,6 +91,8 @@ class UnitySmartAgent:
         Returns:
             Agent 的最终回复
         """
+        print(f"\n🔍 LLM 输入: {user_request[:200]}...")  # 打印输入前200字符
+
         config = {"configurable": {"thread_id": thread_id}}
         if max_rounds is not None:
             config["recursion_limit"] = max_rounds
@@ -106,7 +108,9 @@ class UnitySmartAgent:
             return "Agent 没有返回任何结果。"
 
         last_message = messages[-1]
-        return last_message.content
+        result = last_message.content
+        print(f"📝 LLM 输出: {result[:500]}...")  # 打印输出前500字符
+        return result
 
 
 # 快速测试
