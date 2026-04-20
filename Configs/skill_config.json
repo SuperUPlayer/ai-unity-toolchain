@@ -1,0 +1,101 @@
+{
+  "gcd_config": {
+    "default_gcd_duration": 1.0,
+    "description": "全局公共冷却时间配置，单位：秒"
+  },
+  "skills": [
+    {
+      "skill_id": 10001,
+      "skill_name": "火球术",
+      "description": "发射一颗火球，对目标造成火焰伤害",
+      "skill_type": "active",
+      "cooldown": 8.0,
+      "affected_by_gcd": true,
+      "gcd_override": 0,
+      "priority": 1,
+      "max_charges": 1,
+      "charge_cooldown": 0,
+      "tags": ["magic", "fire", "ranged"]
+    },
+    {
+      "skill_id": 10002,
+      "skill_name": "冰霜新星",
+      "description": "以自身为中心释放冰霜冲击，冻结周围敌人",
+      "skill_type": "active",
+      "cooldown": 25.0,
+      "affected_by_gcd": true,
+      "gcd_override": 0,
+      "priority": 2,
+      "max_charges": 1,
+      "charge_cooldown": 0,
+      "tags": ["magic", "ice", "aoe"]
+    },
+    {
+      "skill_id": 10003,
+      "skill_name": "瞬步",
+      "description": "快速闪现到目标位置，不触发GCD",
+      "skill_type": "active",
+      "cooldown": 15.0,
+      "affected_by_gcd": false,
+      "gcd_override": 0,
+      "priority": 3,
+      "max_charges": 2,
+      "charge_cooldown": 15.0,
+      "tags": ["movement", "instant"]
+    },
+    {
+      "skill_id": 10004,
+      "skill_name": "普通攻击",
+      "description": "基础攻击，受GCD影响但冷却时间极短",
+      "skill_type": "auto_attack",
+      "cooldown": 0.5,
+      "affected_by_gcd": true,
+      "gcd_override": 0.8,
+      "priority": 0,
+      "max_charges": 1,
+      "charge_cooldown": 0,
+      "tags": ["physical", "melee"]
+    },
+    {
+      "skill_id": 10005,
+      "skill_name": "狂暴",
+      "description": "进入狂暴状态，提升攻击力，使用自定义GCD",
+      "skill_type": "active",
+      "cooldown": 60.0,
+      "affected_by_gcd": true,
+      "gcd_override": 1.5,
+      "priority": 2,
+      "max_charges": 1,
+      "charge_cooldown": 0,
+      "tags": ["buff", "stance"]
+    },
+    {
+      "skill_id": 10006,
+      "skill_name": "连射",
+      "description": "连续射击3次，每次消耗一层充能",
+      "skill_type": "active",
+      "cooldown": 0,
+      "affected_by_gcd": true,
+      "gcd_override": 0,
+      "priority": 1,
+      "max_charges": 3,
+      "charge_cooldown": 10.0,
+      "tags": ["ranged", "multi_hit"]
+    }
+  ],
+  "cooldown_categories": [
+    {
+      "category_name": "元素魔法",
+      "category_id": "elemental",
+      "shared_cooldown": false,
+      "description": "火、冰、雷等元素魔法技能"
+    },
+    {
+      "category_name": "防御技能",
+      "category_id": "defensive",
+      "shared_cooldown": true,
+      "shared_cooldown_duration": 30.0,
+      "description": "共享冷却的防御类技能"
+    }
+  ]
+}
